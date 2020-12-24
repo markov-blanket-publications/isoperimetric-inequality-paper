@@ -1,0 +1,176 @@
+\documentclass{article}
+
+% ready for submission
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{amsmath}}
+
+\title{Derivation of the isoperimetric inequality from the ideal gas equation}
+
+\date{September 23, 2019}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+\author{%
+  Aidan Rocke\\
+  \texttt{aidanrocke@gmail.com} \\
+  % examples of more authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \AND
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+   Why is it that whenever balloons are inflated they converge towards the shape of a sphere regardless of their initial geometry? In this article I consider the contribution of the elastic material the balloons are made of by analysing the problem in two dimensions and demonstrate that a minimal
+surface may be entirely due to local mechanical instabilities.
+\end{abstract}
+
+\section{Reasonable assumptions}
+
+Let's consider an object that is only allowed to extend in one dimension. If you were to elongate such an object it would assume a roughly cylindrical shape. It follows that it is worth paying careful attention to the material properties of the balloon.
+
+In particular, a two-dimensional balloon $\mathcal{B} \in \mathbb{R}^2$ is essentially an elastic loop that initially has perimeter of length:
+
+\begin{equation}
+\lvert \partial \mathcal{B}(t=0) \rvert = l_0
+\end{equation}
+
+Furthermore, we may make the following reasonable assumptions:
+
+1. The balloon contains an astronomical number of gas particles that collectively satisfy the ideal gas equation.
+
+2. The balloon is surrounded by a heat bath.
+
+3. The loop itself is made of a macroscopic number of elastic filaments of equal length.
+
+Furthermore, if we consider that physical systems tend to minimise potential energy we may infer that the balloon would tend to increase in volume
+without increasing $\lvert \partial \mathcal{B}(t) \rvert$, the length of its perimeter. In the case of inflation, after accumulating a pressure difference with respect to its environment the evolution of $\partial \mathcal{B}(t)$
+would be guided by an approximately isobaric process provided that $\lvert \partial \mathcal{B}(t) \rvert$ is approximately constant:
+
+\begin{equation}
+PV = nRT
+\end{equation}
+
+\begin{equation}
+\frac{\Delta V}{V} = \frac{\Delta T}{T}
+\end{equation}
+
+We can go further with this type of reasoning. Not only does the elastic membrane constrain the type of thermodynamic process that is likely to guide
+inflation; it also constrains the mechanism for modifying the geometry of the balloon.
+
+\newpage
+
+\section{Local deformations of elastic filaments lead to minimal surfaces}
+
+If we assume that the balloon constrains an ideal gas that my be modelled as an astronomical number of Newtonian particles, it's reasonable to suppose
+that equal pressure is applied to equal areas. Now, if this is the case we may consider pressure-driven deformations of $\partial \mathcal{B}$ that
+exploit a local mechanism that is operational everywhere on the boundary. What might such a mechanism look like?
+
+Under a coarse-grained approximation, the boundary $\partial B$ consists of a large chain of cylindrical elastic rods. If each individual rod is much larger
+than the characteristic length where bending occurs any amount of bending will guarantee tensile stress. It follows that the elastic membrane $\partial B$ will try, as much as possible, to increase the enclosed volume while minimising tensile stress.
+This global minimisation happens by minimising the bending angle locally. No global coordination is required.
+
+Another way of understanding this process is that deformations of the elastic membrane are mainly driven by local mechanical instabilities that lead to
+a global minimisation of potential energies.
+
+\section{A polygonal approximation to two-dimensional elastic boundaries}
+
+One approach to modelling the activity of elastic boundaries is to approximate them as polygons with $N$ sides of equal length where $N$ is large.
+Given that the sum of the interior of a polygon with $N$ vertices may be partitioned into $N-2$ disjoint triangles, the sum of the interior angles $\theta_i \in (0,2\pi)$ must satisfy:
+
+\begin{equation}
+\sum_{i=1}^N = (N-2) \cdot \pi
+\end{equation}
+
+and this allows us to define the potential energy:
+
+\begin{equation}
+U = \frac{1}{2} \sum_{i=1}^N (\theta_i - \langle \theta_i \rangle)^2 = \frac{1}{2} \sum_{i=1}^N (\theta_i - \pi \cdot \big(\frac{N-2}{N}\big))^2
+\end{equation}
+
+where:
+
+\begin{equation}
+\frac{\partial U}{\partial \theta_i} = \theta_i - \pi \cdot \big(\frac{N-2}{N}\big)
+\end{equation}
+
+\begin{equation}
+\Delta \theta_i \propto \frac{\partial U}{\partial \theta_i}
+\end{equation}
+
+and we find that if we choose the local update with $\lambda \in (0,1)$:
+
+\begin{equation}
+\begin{split}
+\theta_i^{t+1} & = \theta_i^{t} - \Delta \theta_i \\\
+& = \theta_i^{t} - \lambda \frac{\partial U}{\partial \theta_i} \\\
+& = (1-\lambda) \cdot \theta_i^t + \lambda \cdot \pi \cdot \big(\frac{N-2}{N}\big)
+\end{split}
+\end{equation}
+
+and we can show that $\theta_i^t \rightarrow \big(\frac{N-2}{N}\big) \cdot \pi$ very quickly since:
+
+\begin{equation}
+x_{n+1} = (1-\lambda) \cdot x_n + \lambda \cdot \alpha \implies x_{n+1} - \alpha = (1-\lambda) \cdot (x_n - \alpha)
+\end{equation}
+
+\begin{equation}
+\frac{(x_{n+1}-\alpha)^2}{(x_n - \alpha)^2} = (1-\lambda)^2
+\end{equation}
+
+so if we define:
+
+\begin{equation}
+\epsilon_{n}^2 = (x_{n}-\alpha)^2
+\end{equation}
+
+we find that:
+
+\begin{equation}
+\lim_{n \to \infty} \epsilon_{n+1}^2 = \epsilon_1^2 \cdot \prod_{n=1}^\infty \frac{\epsilon_{n+1}^2}{\epsilon_{n}^2} = \lim_{n \to \infty} \epsilon_1^2 \cdot (1-\lambda)^{2n} = 0
+\end{equation}
+
+so we have exponentially fast convergence to a spherical geometry.
+
+\section{Discussion}
+
+I think it's worth noting that this is a question that occurred to me more than five years ago but I tried to formulate it as a global optimisation problem in geometry rather than a problem in elasticity, and I made little progress. As for the three-dimensional case, I believe that is easily handled by a symmetry argument.
+
+The way this analysis occurred to me happened more or less by accident, one Saturday afternoon, when I was playing with a rubber band on a table. I noted that the elastic material was homogeneous and that all deformations were local, therefore the same local mechanism was operational at every point on the boundary. From these observations my analysis followed rather naturally.
+
+\end{document}
